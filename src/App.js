@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import Box from "./components/Box"
+import BoxForm from "./components/BoxForm"
+import "./App.css"
+import DisplayBoxes from "./components/DisplayBoxes"
 
-function App() {
+const App = () => {
+  const [boxes, setBoxes] = useState([])
+
+  const makeBox = (color) => {
+    setBoxes(boxes.push(color))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BoxForm setBoxes={setBoxes} boxes={boxes} />
+      <DisplayBoxes boxes={boxes} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
